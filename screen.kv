@@ -1,11 +1,6 @@
-<Increment>:
-    orientation: 'vertical'
-    Button:
-        text: "How many times did I click?"
-        color: 'black'
-        font_size: 30
-        on_release: label_count.text = str(int(label_count.text)+1)
-    Label:
-        id: label_count
-        text: "0"
-        font_size: 26
+<TasksList>:
+    BoxLayout:
+        id: box
+        orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height
