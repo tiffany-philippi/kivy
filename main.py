@@ -6,14 +6,14 @@ from kivy.uix.boxlayout import BoxLayout
 class Screen(App): 
     def build(self):
         box = BoxLayout(orientation='vertical')
-        button = Button(text="Hello world", font_size=30, on_release=self.increment)
-        label = Label(text="This is a label", font_size=21)
+        button = Button(text="How many times did I click?", font_size=30, on_release=self.increment)
+        self.label = Label(text="0", font_size=21)
         box.add_widget(button)
-        box.add_widget(label)
+        box.add_widget(self.label)
         
         return box
 
     def increment(self, button):
-        button.text = 'You\'re welcome'
+        self.label.text = str(int(self.label.text)+1)
 
 Screen().run()
