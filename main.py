@@ -1,8 +1,12 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout 
+from kivy.uix.screenmanager import ScreenManager, Screen
 
-class TasksList(BoxLayout):
-    def __init__(self, tasks, **kwargs):
+class Manager(ScreenManager):
+    pass
+
+class TasksList(Screen):
+    def __init__(self, tasks=[], **kwargs):
         super().__init__(**kwargs)
         for task in tasks:
             self.ids.box.add_widget(Task(text=task))
@@ -17,8 +21,8 @@ class Task(BoxLayout):
         super().__init__(**kwargs)
         self.ids.label_task.text = text
 
-class Screen(App): 
+class View(App): 
     def build(self):
-        return TasksList(['Go shopping', 'Pick up the kids', 'Walk the dog', 'Study for exames', 'Read a book'])
+        return Manager()
 
-Screen().run()
+View().run()
