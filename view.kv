@@ -1,14 +1,43 @@
 <Manager>:
-    Screen:
-        Button:
-            text: "See tasks"
-            on_release: root.current = 'tasks'
+    Menu:
+        name: 'menu'
     TasksList:
         name: 'tasks'
+
+<Menu>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 200
+        spacing: 50
+        Image:
+            source: 'note.png'
+            size_hint_y: None
+            height: 300
+            allow_stretch: True
+        Button:
+            text: "Tasks"
+            on_release: app.root.current = 'tasks'
+        Button:
+            text: "Help"
+        Button:
+            text: "Log out"
+            on_release: app.stop()
 
 <TasksList>:
     BoxLayout:
         orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: 'Tasks'
+                    on_release: app.root.current = 'menu'
+                ActionButton: 
+                    text: 'Log out'
+                    on_release: app.stop()
+                ActionButton: 
+                    text: 'Menu'
+                    on_release: app.root.current = 'menu'
+
         ScrollView:
             BoxLayout:
                 id: box
